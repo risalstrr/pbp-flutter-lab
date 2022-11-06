@@ -34,7 +34,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   var isEven = '';
-  bool _canShowButton = true;
 
   void _incrementCounter() {
     setState(() {
@@ -88,11 +87,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              FloatingActionButton(
-                onPressed: _decrementCounter,
-                tooltip: 'Decrement',
-                child: const Icon(Icons.remove),
-              ),
+              if (_counter != 0) ...[
+                FloatingActionButton(
+                  onPressed: _decrementCounter,
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                )
+              ],
               Expanded(child: Container()),
               FloatingActionButton(
                 onPressed: _incrementCounter,
