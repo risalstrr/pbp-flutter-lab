@@ -183,62 +183,72 @@ class _tambahBudgetPageState extends State<tambahBudgetPage> {
                     },
                   ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: DropdownButtonFormField(
-                        decoration: InputDecoration(
-                          labelText: "Pilih Jenis",
+                Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              labelText: "Pilih Jenis",
+                            ),
+                            value: jenisBudget,
+                            items: listJenisBudget.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? value) {
+                              setState(() {
+                                jenisBudget = value!;
+                              });
+                            },
+                            validator: (String? value) {
+                              return value == null
+                                  ? 'Tidak Boleh Kosong!'
+                                  : null;
+                            },
+                          ),
                         ),
-                        value: jenisBudget,
-                        items: listJenisBudget.map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
+                      ],
+                    )),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2023),
+                        ).then((value) {
                           setState(() {
-                            jenisBudget = value!;
+                            _date = value;
                           });
-                        },
-                        validator: (String? value) {
-                          return value == null ? 'Tidak Boleh Kosong!' : null;
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2023),
-                      ).then((value) {
-                        setState(() {
-                          _date = value;
                         });
-                      });
-                    },
-                    child: Text("Pilih Tanggal"),
+                      },
+                      child: Text("Pilih Tanggal"),
+                    ),
                   ),
-                ),
-                TextButton(
-                  child: const Text(
-                    "Simpan",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue)),
-                  onPressed: _addBudget,
                 ),
               ],
             ),
           ),
+        ),
+      ),
+      floatingActionButton: Container(
+        alignment: Alignment.bottomCenter,
+        child: TextButton(
+          child: const Text(
+            "Simpan",
+            style: TextStyle(color: Colors.white),
+          ),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue)),
+          onPressed: _addBudget,
         ),
       ),
     );

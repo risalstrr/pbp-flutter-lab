@@ -52,8 +52,9 @@ class _budgetState extends State<budget> {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          widget.budgetItem.length == 0
+          widget.budgetItem == null || widget.budgetItem.isEmpty
               ? Center(
                   child: Column(
                     children: [

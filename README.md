@@ -4,6 +4,8 @@
 
 ## Kelas : PBP- C
 
+# **TUGAS 7**
+
 ## Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
 
 Stateless Widget adalah widget yang tidak akan pernah berubah. Stateless Widget merupakan widget yang di-build hanya dengan konfigurasi yang telah diinisiasi sejak awal.
@@ -39,3 +41,41 @@ const dapat digunakan untuk deklarasi variabel immutable yang nilainya bersifat 
    - Apabila counter bernilai genap, maka teks indikator berubah menjadi "GENAP" dengan warna merah.
    - Angka 0 dianggap sebagai angka genap.
    - Menyembunyikan/menghilangkan tombol - apabila counter bernilai 0.
+
+# **TUGAS 8**
+
+## Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement.
+
+Perbedaan Navigator.push dan Navigator.pushReplacement adalah Navigator.push digunakan untuk menambahkan route ke stack, sedangkan Navigator.pushReplacement digunakan untuk mengganti route yang ada di stack. Navigator.pushReplacement akan menghapus semua route yang ada di stack kecuali route pertama.
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+Text, Center, Drawer, Scaffold, AppBar, Column, MaterialApp, FloatingActionButton.
+
+## Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).
+
+`onTapDown`, `onTapUp`, `onTapCancel`, `onScaleStart`, `onScaleUpdate`, `onScaleEnd`,
+`onPressed`, `onTap`, `onChanged`, `onSubmitted`, `onLongPress`, `onDoubleTap`, `onVerticalDragStart`, `onVerticalDragUpdate`, `onVerticalDragEnd`, `onPanStart`,`onSemanticsTap`, `onSemanticsLongPress`, `onSemanticsScrollLeft`, `onDismissed`, `onResize`, `onReorder`, `onRefresh`, `onLoading`, `onError`, `onEditingComplete`.
+
+## Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+
+Navigator mengatur stack of route dan menyediakan dua cara untuk mengatur stack of route, yaitu declarative dan imperative. Declarative menggunakan Navigator.pages, sedangkan imperative Navigator.push dan Navigator.pop
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+- Menambahkan drawer/hamburger menu pada app yang telah dibuat sebeumnya.
+- Menambahkan tiga tombol navigasi pada drawer/hamburger.
+  - Navigasi pertama untuk ke halaman counter.
+  - Navigasi kedua untuk ke halaman form.
+  - Navigasi ketiga untuk ke halaman yang menampilkan data budget yang telah di-input melalui form.
+- Menambahkan halaman form
+  - Menambahkan elemen input dengan tipe data String berupa judul budget.
+  - Menambahkan elemen input dengan tipe data int berupa nominal budget.
+  - Menambahkan elemen dropdown yang berisi tipe budget dengan pilihan pemasukan dan pengeluaran.
+  - Menambahkan button untuk menyimpan budget.
+- Menambahkan halaman data budget
+  - Menampilkan semua judul, nominal, dan tipe budget yang telah ditambahkan pada form.
+- Menambahkan elemen date picker pada halaman form.
+- Menampilkan elemen date (format bebas) pada setiap elemen budget yang ada pada halaman data budget.
+- Refactor widget Drawer ke sebuah file terpisah.
+- Melakukan add-commit-push ke GitHub.
