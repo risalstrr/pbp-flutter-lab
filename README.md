@@ -79,3 +79,28 @@ Navigator mengatur stack of route dan menyediakan dua cara untuk mengatur stack 
 - Menampilkan elemen date (format bebas) pada setiap elemen budget yang ada pada halaman data budget.
 - Refactor widget Drawer ke sebuah file terpisah.
 - Melakukan add-commit-push ke GitHub.
+
+# **TUGAS 9**
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Ya bisa, hanya saja data yang didapat bisa jadi strukturnya tidak sesuai dengan apa yang diinginkan. Oleh karena itu, sebaiknya menentukan model terlebih dahulu agar data yang didapat mempunyai struktur yang baik dan mudah untuk digunakan.
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+- `FutureBuilder`: Widget yang digunakan untuk menampilkan data yang akan diambil dari web service oleh `Future`.
+- `RichText`: menambahkan teks dengan formatting yang berbeda-beda
+
+## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+
+1. Fungsi yang mereturn class `Future` akan melakukan _fetch_ data JSON dari web service secara _async_.
+2. Widget `FutureBuilder` dengan parameter `future` yang berisi fungsi tersebut akan menampilkan data yang telah di-_fetch_. Widget tersebut akan menampilkan widget lainnya sesuai dengan kondisi `future` yang ada, yakni `snapshot.hasData` saat future berisi data, `snapshot.hasError` saat future mendapati error, dan `snapshot.data == null` saat future tidak berisi data apapun (disini dimanfaatkan untuk menunjukkan bahwa data sedang di-_fetch_ / masih _loading_).
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+- Menambahkan tombol navigasi pada drawer/hamburger untuk ke halaman mywatchlist.
+- Membuat satu file dart yang berisi model mywatchlist.
+- Menambahkan halaman mywatchlist yang berisi semua watch list yang ada pada endpoint JSON di Django yang telah dideploy ke Heroku (Tugas 3).
+- Membuat navigasi dari setiap judul watch list ke halaman detail
+- Menambahkan halaman detail untuk setiap mywatchlist yang ada pada daftar tersebut. Halaman ini menampilkan judul, release date, rating, review, dan status (sudah ditonton/belum).
+- Menambahkan tombol untuk kembali ke daftar mywatchlist

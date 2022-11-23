@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_flutter/data.dart';
+import 'package:tugas_flutter/pages/data.dart';
 import 'package:tugas_flutter/main.dart';
-import 'package:tugas_flutter/budget.dart';
+import 'package:tugas_flutter/model/budget.dart';
+import 'package:tugas_flutter/drawer.dart';
 
 class tambahBudgetPage extends StatefulWidget {
   const tambahBudgetPage({super.key});
@@ -18,7 +19,6 @@ class _tambahBudgetPageState extends State<tambahBudgetPage> {
   DateTime? _date;
   String jenisBudget = "Pilih Jenis";
   List<String> listJenisBudget = ["Pilih Jenis", "Pemasukan", "Pengeluaran"];
-  static List<Budget> listBudget = [];
 
   void _addBudget() {
     if (_formKey.currentState!.validate()) {
@@ -27,8 +27,7 @@ class _tambahBudgetPageState extends State<tambahBudgetPage> {
         String hari = _date.toString();
         _hari = hari;
         hari = hari.substring(0, 10);
-        Budget budget = Budget(_judul, _nominal, jenisBudget, hari);
-        listBudget.add(budget);
+        setBudget(_judul, _nominal, jenisBudget, hari);
       });
 
       showDialog(
@@ -94,46 +93,7 @@ class _tambahBudgetPageState extends State<tambahBudgetPage> {
       appBar: AppBar(
         title: const Text('Tambah Budget'),
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            ListTile(
-              title: const Text('Counter'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Tambah Budget'),
-              onTap: () {
-                // Route menu ke halaman utama
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const tambahBudgetPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Data Budget'),
-              onTap: () {
-                // Route menu ke halaman form
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => budget(
-                            budgetItem: listBudget,
-                          )),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: MyDrawer(),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(

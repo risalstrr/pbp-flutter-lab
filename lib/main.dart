@@ -1,6 +1,8 @@
-import 'package:tugas_flutter/form.dart';
-import 'package:tugas_flutter/data.dart';
-import 'package:tugas_flutter/budget.dart';
+import 'package:tugas_flutter/drawer.dart';
+import 'package:tugas_flutter/pages/form.dart';
+import 'package:tugas_flutter/pages/data.dart';
+import 'package:tugas_flutter/pages/mywatchlist_page.dart';
+import 'package:tugas_flutter/model/budget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -57,44 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        drawer: Drawer(
-          child: Column(
-            children: [
-              // Menambahkan clickable menu
-              ListTile(
-                title: const Text('Counter'),
-                onTap: () {
-                  // Route menu ke halaman utama
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Tambah Budget'),
-                onTap: () {
-                  // Route menu ke halaman form
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const tambahBudgetPage()),
-                  );
-                },
-              ),
-              ListTile(
-                title: const Text('Data Budget'),
-                onTap: () {
-                  // Route menu ke halaman form
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => budget()),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: MyDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
